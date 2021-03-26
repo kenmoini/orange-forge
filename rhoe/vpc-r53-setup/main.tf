@@ -7,11 +7,7 @@ resource "aws_vpc" "primary" {
 resource "aws_route53_zone" "r53domain" {
   name = "EXAMPLE.COM"
 
-  vpc {
-    vpc_id = aws_vpc.primary.id
-  }
-
-  lifecycle {
-    ignore_changes = [vpc]
+  tags = {
+    Environment = "primary"
   }
 }
